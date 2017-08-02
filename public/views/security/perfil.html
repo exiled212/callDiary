@@ -1,0 +1,96 @@
+<form role="form" ng-submit="functions.submit()">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"><b>Seleccionar Perfil</b></h3>
+		</div>
+		<div class="panel-body">
+			<div ng-repeat="alert in alerts track by $index" ng-class="functions.statusAlert(alert.status)" class="alert alert-dismissable">
+				<button type="button" class="close" ng-click="functions.removeAlert($index)">&times;</button>
+				<b>	<span ng-bind="alert.message"></span></b> <a href="#" class="alert-link"></a>.
+			</div>
+				<div class="form-group">
+					<select ng-model="select" class="form-control"  name="perfil" required>
+						<option value=""> - - - </option>
+						<option ng-repeat="row in list" value="{{row._id}}"> {{row.apodoPerfil}} </option>
+					</select>
+				</div>
+				<!-- Change this to a button or input when using this as a form -->
+		</div>
+		<div class="panel-footer" ng-if="select">
+			<button type="submit" class="btn btn-lg btn-success ">Seleccionar</button>
+		</div>
+	</div>
+</form>
+<form role="form" ng-submit="functions.defaultSubmit()">
+	<div class="panel panel-primary" >
+		<div class="panel-heading">
+			<h3 class="panel-title"><b>Crear Perfil</b></h3>
+		</div>
+		<div class="panel-body">
+			<div ng-repeat="alert in alerts track by $index" ng-class="functions.statusAlert(alert.status)" class="alert alert-dismissable">
+				<button type="button" class="close" ng-click="functions.removeAlert($index)">&times;</button>
+				<b>	<span ng-bind="alert.message"></span></b> <a href="#" class="alert-link"></a>.
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="">Perfil</label>
+						<input type="text" ng-model="perfil.apodoPerfil" class="form-control">
+					</div>
+					<div class="col-md-4">
+						<label for="">Nombres</label>
+						<input type="text" ng-model="perfil.nombres" class="form-control">
+					</div>
+					<div class="col-md-4">
+						<label for="">Apellidos</label>
+						<input type="text" ng-model="perfil.apellidos" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="">Correo</label>
+						<input type="text" ng-model="perfil.email" class="form-control">
+					</div>
+					<div class="col-md-4">
+						<label for="">Documento</label>
+						<input type="text" ng-model="perfil.documento" class="form-control">
+					</div>
+					<div class="col-md-4">
+						<label for="">Profesion</label>
+						<input type="text" ng-model="perfil.profesion" class="form-control">
+					</div>
+				</div>
+			</div>
+				<!-- Change this to a button or input when using this as a form -->
+		</div>
+		<div class="panel-footer">
+			<button type="submit" class="btn btn-lg btn-success">Crear</button>
+		</div>
+	</div>
+</form>
+
+<form role="form" ng-submit="functions.save()">
+	<div class="panel panel-primary" >
+		<div class="panel-heading">
+			<h3 class="panel-title"><b>Imagen de Perfil</b></h3>
+		</div>
+		<div class="panel-body">
+			<div ng-repeat="alert in alerts track by $index" ng-class="functions.statusAlert(alert.status)" class="alert alert-dismissable">
+				<button type="button" class="close" ng-click="functions.removeAlert($index)">&times;</button>
+				<b>	<span ng-bind="alert.message"></span></b> <a href="#" class="alert-link"></a>.
+			</div>
+			<div class="col-md-offset-4 col-md-2 text-center">
+				<label for="">Imagen Actual</label>
+				<img src="/img/avatar/default.png" width="100%" alt="" class="img-responsive">
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="">Imagen Seleccionada</label>
+				<img src="/img/avatar/default.png" width="100%" alt="" class="img-responsive">
+			</div>
+				<!-- Change this to a button or input when using this as a form -->
+		</div>
+		<div class="panel-footer">
+			<button type="submit" class="btn btn-lg btn-success">Cambiar Imagen</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Administración</h3>
+				</div>
+				<div class="panel-body">
+					<div ng-repeat="alert in alerts track by $index" ng-class="functions.statusAlert(alert.status)" class="alert alert-dismissable">
+						<button type="button" class="close" ng-click="functions.removeAlert($index)">&times;</button>
+						<b>	<span ng-bind="alert.message"></span></b> <a href="#" class="alert-link"></a>.
+					</div>
+					<form role="form" ng-submit="functions.submit()">
+						<fieldset>
+							<div class="form-group">
+								<input ng-model="user.username" class="form-control" placeholder="Nombre de Usuario" name="username" type="text" autofocus required>
+							</div>
+							<div class="form-group">
+								<input ng-model="user.password" class="form-control" placeholder="Contraseña" name="password" type="password" required>
+							</div>
+							<!-- Change this to a button or input when using this as a form -->
+							<button type="submit" class="btn btn-lg btn-success btn-block">Ingresar</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

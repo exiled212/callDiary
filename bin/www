@@ -1,0 +1,12 @@
+#!/usr/bin/nodejs
+(()=>{
+
+	let app		=	require('../app.js')
+
+	app	.set('port', (process.env.PORT || 3000))
+	
+		.listen(app.get('port'), function() {
+			console.log('Iniciando callDiary', app.get('port'));
+		});
+
+})();

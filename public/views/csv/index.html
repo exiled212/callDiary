@@ -1,0 +1,46 @@
+
+<div class="col-lg-6">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b>Formato de CSV</b>
+		</div>
+		<!-- /.panel-heading -->
+		<div class="panel-body">
+			<table width="100%" style="font-size:8px" class="table table-striped table-bordered table-hover table-js">
+				<thead>
+					<tr>
+						<th>N°</th>
+						<th ng-repeat="header in tableHeader">{{header}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-class="functions.selected($index)" ng-repeat="row in tableBody track by $index" ng-click="functions.select(row, $index)">
+						<td ng-bind="$index + 1"></td>
+						<td ng-repeat='header in tableHeader' ng-bind="row[header]">CUPO</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- /.table-responsive -->
+			<div class="well">
+				<input id="csvFile" ng-model="filePath" type="file" accept=".csv" class="form-control">
+				<button type="button" class="btn btn-primary" ng-click="functions.loadCsv()">Cargar CSV</button>
+			</div>
+		</div>
+		<!-- /.panel-body -->
+	</div>
+	<!-- /.panel -->
+</div>
+<div class="col-lg-6">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b>Formato de CSV</b>
+		</div>
+		<!-- /.panel-heading -->
+		<div class="panel-body">
+			<ui-view></ui-view>
+		</div>
+		<!-- /.panel-body -->
+	</div>
+	<!-- /.panel -->
+</div>
+<!-- /.col-lg-12 -->

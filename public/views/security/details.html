@@ -1,0 +1,30 @@
+<form role="form" ng-submit="functions.submit()">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"><b>Datos de Usuario</b></h3>
+		</div>
+		<div class="panel-body">
+			<div ng-repeat="alert in alerts track by $index" ng-class="functions.statusAlert(alert.status)" class="alert alert-dismissable">
+				<button type="button" class="close" ng-click="functions.removeAlert($index)">&times;</button>
+				<b>	<span ng-bind="alert.message"></span></b> <a href="#" class="alert-link"></a>.
+			</div>
+				<div class="form-group">
+					<input class="form-control" placeholder="Nombre de Usuario" name="username" type="text" value="{{user.username}}" disabled>
+				</div>
+				<div class="form-group">
+					<input ng-model="user.email" class="form-control" placeholder="Correo Electronico" name="email" type="email" required>
+				</div>
+				<div class="form-group">
+					<input ng-model="user.password" class="form-control" placeholder="Contraseña" name="password" type="password" required>
+				</div>
+				<div class="form-group">
+					<input ng-model="user.passwordValidate" class="form-control" placeholder="Escriba Contraseña de nuevo" name="passwordValidate" type="password" required>
+				</div>
+				<!-- Change this to a button or input when using this as a form -->
+		</div>
+		<div class="panel-footer">
+			<button type="submit" class="btn btn-lg btn-success ">Registrar</button>
+		</div>
+	</div>
+</form>
+		

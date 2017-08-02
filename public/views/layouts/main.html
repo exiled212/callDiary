@@ -1,0 +1,42 @@
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" >Curriculum Vitae</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <!--Objetos de Menu-->
+                    <li>
+                        <a ui-sref="main.csv" ui-sref-active="active"><i class="fa fa-user fa-fw"></i> <b>CSV</b></a>
+                        <a ui-sref="main.doc" ui-sref-active="active"><i class="fa fa-user fa-fw"></i> <b>Descargar Llamadas</b></a>
+                        <a ui-sref="main.upload" ui-sref-active="active"><i class="fa fa-user fa-fw"></i> <b>Asignar Llamadas</b></a>
+                        <a ui-sref="main.sms" ui-sref-active="active"><i class="fa fa-user fa-fw"></i> <b>Mandar mensajes</b></a>
+                        <a ui-sref="main.login" ui-sref-active="active"><i class="fa fa-user fa-fw"></i> <b>Registrar Persona</b></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+</div>
+<!-- /#wrapper -->
+<div id="page-wrapper">
+    <ui-view></ui-view>
+</div>
+

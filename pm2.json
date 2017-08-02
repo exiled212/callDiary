@@ -1,0 +1,15 @@
+{
+"apps":[{
+"name"        : "cv",
+"script"      : "www",
+"watch"       : true,
+"merge_logs"  : true,
+"cwd"         : "bin",
+  "env": {
+  "NAME_DATABASE": "cv",
+  "USER_DATABASE": "admin",
+  "PASSOWRD_DATABASE": "1234",
+  "HOST_DATABASE": "localhost"
+  }
+}]
+}
