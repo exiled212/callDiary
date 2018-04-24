@@ -1,0 +1,44 @@
+<div class="col-lg-12">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b>Usuarios</b>
+		</div>
+		<!-- /.panel-heading -->
+		<div class="panel-body">
+            <div class="col-md-12">
+			    <button class="btn btn-info">hola</button>
+            </div>
+		</div>
+		<!-- /.panel-body -->
+	</div>
+	<!-- /.panel -->
+</div>
+<div class="col-lg-12">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b>Archivos</b>
+		</div>
+		<!-- /.panel-heading -->
+		<div class="panel-body">
+			<div class="tree">
+                <ul>
+                    <li  ng-repeat="date in files.data">
+                        <span class="btn btn-warning"><i class="icon-calendar"></i> {{date.name}} </span>
+                        <ul>
+                            <li ng-repeat="human in date.list">
+                                <span class="btn btn-info"><i class="icon-minus-sign"></i> {{human.name}}</span>
+                                <ul>
+                                    <li ng-repeat="csv in human.list">
+                                        <a href="{{csv.path}}"><span class="btn btn-success"><i class="icon-time"></i> {{csv.name}}</span> &ndash; Descargar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+		</div>
+		<!-- /.panel-body -->
+	</div>
+	<!-- /.panel -->
+</div>

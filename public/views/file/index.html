@@ -1,0 +1,178 @@
+<div class="col-md-12">
+	<div class="col-lg-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<b>Cargar Xlsx</b>
+			</div>
+			<div class="panel-body">
+				<div class="well">
+					<input id="a" name="file" type="file" upload-file="xlsxFile" class="form-control">
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button type="button" ng-click="functions.loadFile()" class="btn btn-primary btn-block">Enviar</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<b>Campos del Xlsx</b>
+			</div>
+			<div class="panel-body">
+				<div class="alert alert-info" ng-if="!(xlsxData && xlsxData.length != 0)">
+					Seleccione el Archivo Excel en "<b>Cargar Xlsx</b>"
+				</div>
+				<ul class="nav nav-tabs">
+					<li ng-repeat="lib in xlsxData"><a href="#lib_{{lib.id}}" data-toggle="tab" ng-bind="lib.lib"></a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div ng-repeat="lib in xlsxData" class="tab-pane fade" id="lib_{{lib.id}}">
+						<div ng-repeat="column in lib.data track by $index" ng-class="css.selectedXlsx(lib.id, column.id)" ng-click="functions.selectRowXlsx(lib.id, column)" draggable="false" class="btn btn-info"> <span ng-bind="column.row"></span> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<b>Campos de Base de Datos</b>
+			</div>
+			<div class="panel-body">
+				<div class="alert alert-info" ng-if="!(dbHeads.length == rowInsert.length)">
+					Inserte todos los campos de la base de datos para poder almacenar los datos.
+				</div>
+				<div class="alert alert-info" ng-if="(dbHeads.length == rowInsert.length)">
+					Ya puede enviar los datos a la Base de Datos
+				</div>
+				<div ng-repeat="head in dbHeads"  draggable="false" class="btn" ng-class="css.selectedDb($index)" ng-click="functions.selectRowDb($index, head)"> <span ng-bind="head | dbData" ></span> </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-9">
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<b>Seleccionar Campos</b>
+			</div>
+			<div class="panel-body text-center">
+				<div class="alert alert-info">
+					Seleccione uno de los campos para visualizar que valores posee y seleccionar a que campo de la Base de Datos pertenece.
+				</div>
+				<div>
+					<div class="col-md-6">
+						<label >Campo de xlsx: </label>
+						<div class="btn btn-default" ng-if="!(rowXlsxSelect.row)" style="border:2px dashed #000">Seleccione el Campo</div>
+						<div class="btn btn-info" ng-if="rowXlsxSelect.row" ng-bind="rowXlsxSelect.row"></div>
+					</div>
+					<div class="col-md-6">
+						<label >Campo de DB: </label>
+						<div class="btn btn-default" ng-if="!(rowDbSelect.row)" style="border:2px dashed #000">Seleccione el Campo</div>
+						<div class="btn btn-info" ng-if="rowDbSelect.row" ng-bind="rowDbSelect.row | dbData"></div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+					<a class="btn btn-success btn-block" ng-if="!(dbHeads.length == rowInsert.length)" ng-click="functions.addRow()" ng-disabled="!( rowDbSelect.row && rowXlsxSelect.row )">Agregar</a>
+					<a class="btn btn-primary btn-block" ng-if="dbHeads.length == rowInsert.length" ng-click="functions.sendData()">Enviar</a>
+					<button class="hidden" id="tableResult" data-toggle="modal" data-target="#result" >Enviar</button>
+					<div class="modal fade" id="result" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">Campos Registrados</h4>
+								</div>
+								<div class="modal-body">
+									<div class="col-lg-12">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												Bordered Table
+											</div>
+											<!-- /.panel-heading -->
+											<div class="panel-body">
+												<div class="table-responsive table-bordered">
+													<table class="table">
+														<thead>
+															<tr>
+																<th>#</th>
+																<th ng-repeat="head in xlsxResultHead">{{head | dbData}}</th>
+																<th>Mensaje</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="row in xlsxResult | orderBy: 'status' " ng-class="css.statusRow(row.status)">
+																<td>{{$index + 1}}</td>
+																<td ng-repeat="head in xlsxResultHead">{{row.model[head]}}</td>
+																<td>{{row.message}}</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<!-- /.table-responsive -->
+											</div>
+											<!-- /.panel-body -->
+										</div>
+										<!-- /.panel -->
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+				</form>						
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<b>Lista de Campos Listos para almacenar en la Base de Datos</b>
+			</div>
+			<div class="panel-body">
+				<div class="alert alert-info" ng-if="rowInsert.length == 0">
+					Seleccione 1 campo del archivo Xlsx y uno de la Db y dale en "<b>agregar</b>"
+				</div>
+				<div class="alert alert-info" ng-if="rowInsert.length != 0">
+						Si desea retirar uno de los campos, haga click en el.
+					</div>
+				<div ng-if="rowInsert.length != 0">
+					<button class="btn btn-info btn-block" ng-repeat="row in rowInsert" ng-click="functions.removeRow($index)"> <b>XLSX:</b> {{row.xlsxRow}} - <b>DB:</b> {{row.dbRow | dbData}} </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-3">
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<b>Visor de Datos</b>
+			</div>
+			<div class="panel-body">
+				<div class="alert alert-info" ng-if="!(rowXlsxSelect.row)">
+					Seleccione el campo del Xlsx para mostrar los datos que posee
+				</div>
+				<table class="table table-hover" ng-if="rowXlsxSelect.row ">
+					<thead>
+						<tr>
+							<th class="text-center bg-primary">{{rowXlsxSelect.row}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="row in rowXlsxSelect.data | limitTo:'10' track by $index" class="text-center">
+							<td ng-bind="row"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

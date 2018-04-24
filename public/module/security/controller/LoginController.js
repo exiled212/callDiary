@@ -13,7 +13,7 @@
 					.then(result=>{
 						if(result){
 							$scope.alerts.push({status:'success', message:'Inicio Correcto'})
-							$state.go('main.perfils')
+							$state.go('main.perfil')
 						} else {
 							$scope.alerts.push({status:'error', message:'Datos Invalidos'})
 						}

@@ -14,7 +14,7 @@
 	, 		fastCsv 		= 	require("fast-csv")
 
 
-	let app	= express()
+	let 	app	= express()
 
 	//Configuracion de Sessiones
 	app			
@@ -31,7 +31,6 @@
 		.use(bodyParser.urlencoded({ extended: true }))
 		.use(bodyParser.json())
 		.use(methodOverride())
-
 		.use(passport.initialize())
 		.use(passport.session())
 

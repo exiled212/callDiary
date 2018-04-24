@@ -31,14 +31,14 @@
 								let data = result.data
 								isLogin = data.isLogin
 								if(!isLogin){
-									$state.go('login')
+									$state.go('main.login')
 								} else{
 									login = data.user
-									$state.go('admin.details')
+									$state.go('main.perfils')
 								}
 							})
 					} else {
-						$state.go('admin.details')
+						$state.go('main.perfils')
 					}
 				},
 

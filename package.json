@@ -14,11 +14,13 @@
     "angular-file-input": "^1.0.1",
     "assert": "^1.4.1",
     "body-parser": "^1.17.2",
+    "connect-multiparty": "^2.0.0",
     "consolidate": "^0.14.5",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "fast-csv": "^2.4.0",
+    "formidable": "^1.1.1",
     "md5": "^2.2.1",
     "method-override": "^2.3.9",
     "mongo": "^0.1.0",
@@ -34,11 +36,15 @@
   },
   "devDependencies": {
     "babili": "^0.1.4",
+    "browserify": "^14.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-html": "^0.4.7",
     "gulp-plumber": "^1.1.0",
-    "nodemon": "^1.11.0"
+    "gulp-uglify": "^3.0.0",
+    "nodemon": "^1.11.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

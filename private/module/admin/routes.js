@@ -26,6 +26,8 @@
 	router.get('/perfil/list', PerfilController.list)
 
 	router.post('/perfil/create', PerfilController.create)
+	router.post('/perfil/update', PerfilController.update)
+	router.post('/perfil/delete', PerfilController.delete)
 
 	module.exports = router;
 

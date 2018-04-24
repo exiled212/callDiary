@@ -43,13 +43,38 @@
 					
 				},
 
-
 				create(data){
 					let deferred = $q.defer()
-
 					$http.post('/admin/perfil/create', data)
 						.then(result=>{
-							console.log(result)
+							deferred.resolve(result.data.perfil)
+						})
+						.catch(err=>{
+							deferred.reject(true)
+							console.log(err)
+						})
+
+					return deferred.promise
+				},
+
+				update(data){
+					let deferred = $q.defer()
+					$http.post('/admin/perfil/update', data)
+						.then(result=>{
+							deferred.resolve(result.data.perfil)
+						})
+						.catch(err=>{
+							deferred.reject(true)
+							console.log(err)
+						})
+					return deferred.promise
+				},
+
+
+				delete(id){
+					let deferred = $q.defer()
+					$http.post('/admin/perfil/delete', {id})
+						.then(result=>{
 							deferred.resolve(result)
 						})
 						.catch(err=>{
